@@ -1,5 +1,4 @@
 import discord, asyncio
-from discord import channel
 from discord import client
 
 import requests, json
@@ -23,16 +22,16 @@ class Client(discord.Client):
 	# Prints the info
 	async def print_info(self):
 		await self.wait_until_ready()
+		minutes = 2
 		counter = 0
 		channel = self.get_channel(919390138868584489)
 		while not self.is_closed():
 			counter += 1
 			await channel.send(get_server_info(content) + '\n' + get_next_occurences(content))
-			await asyncio.sleep(60*5) # runs every 5 minutes
+			await asyncio.sleep(60 * minutes)
 
 req = requests.get(url="https://stellarflyff.com/server-status")
 content = json.loads(req.content) # the json content from the website
-
 
 client = Client()
 client.run(get_token())
