@@ -1,13 +1,11 @@
-
-import sched, time
+import requests, json
 
 url = "https://stellarflyff.com/server-status"
-s = sched.scheduler(time.time, time.sleep)
 
-def get_data(sc):
-	print("Retreving information from " + url + "...")
-	s.enter(5, 1, get_data, (sc,))
+req = requests.get(url)
+if req.status_code == 200:
+	data = json.loads(req.content)
 
-# Start the loop immediately 
-s.enter(0, 1, get_data, (s,))
-s.run()
+	for section in ["data"]:
+		for sub_section in ["serverStatus", "serverTime"]:
+			print("Server Status: " + data[section][sub_section])
