@@ -1,17 +1,12 @@
 import requests, json
 
-url = "https://stellarflyff.com/server-status"
+def get_server_info(json_data):
+	print("Server Status: " + json_data["data"]["serverStatus"])
+	print("Server Time: " + json_data["data"]["serverTime"])
 
-req = requests.get(url)
-if req.status_code == 200:
-	c = json.loads(req.content)
-	print("Server Status: " + c["data"]["serverStatus"])
-	print("Server Time: " + c["data"]["serverTime"])
-
-	#print(c["data"]["nextOccurences"])
-	
-	next_occurances = c["data"]["nextOccurences"]
-	print("\nNext Occurences")
+def get_next_occurences(json_data):
+	next_occurances = json_data["data"]["nextOccurences"]
+	print("Next Occurences")
 	print("Guild Siege: " + next_occurances["guildSiege"])
 	print("Capture the Flag: " + next_occurances["captureTheFlag"])
 	print("Team Deathmatch: " + next_occurances["teamDeathmatch"])
@@ -21,3 +16,11 @@ if req.status_code == 200:
 	print("Daily Mission: " + next_occurances["dailyMission"])
 	print("Weekly Mission: " + next_occurances["weeklyMission"])
 
+
+url = "https://stellarflyff.com/server-status"
+req = requests.get(url)
+
+if req.status_code == 200:
+	content = json.loads(req.content)
+	get_server_info(content)
+	get_next_occurences(content)
