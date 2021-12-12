@@ -4,11 +4,7 @@ from discord import client
 
 import requests, json
 from commands import *
-
-TOKEN = "" 
-with open("token.txt") as f:
-	TOKEN = f.readline()
-
+from tools import *
 
 class Client(discord.Client):
 	def __init__(self, *args, **kwargs):
@@ -39,4 +35,4 @@ content = json.loads(req.content) # the json content from the website
 
 
 client = Client()
-client.run(TOKEN)
+client.run(get_token())
