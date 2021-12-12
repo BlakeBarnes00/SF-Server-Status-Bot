@@ -1,15 +1,19 @@
 def get_server_info(json_data):
-	print("Server Status: " + json_data["data"]["serverStatus"])
-	print("Server Time: " + json_data["data"]["serverTime"])
+	output = ""
+	output += "Server Status: " + json_data["data"]["serverStatus"] + '\n'
+	output += "Server Time: " + json_data["data"]["serverTime"] + '\n'
+	return output
 
 def get_next_occurences(json_data):
 	next_occurances = json_data["data"]["nextOccurences"]
-	print("Next Occurences")
-	print("Guild Siege: " + next_occurances["guildSiege"])
-	print("Capture the Flag: " + next_occurances["captureTheFlag"])
-	print("Team Deathmatch: " + next_occurances["teamDeathmatch"])
-	print("Dodge the Attack: " + next_occurances["dodgeTheAttack"])
-	print("Monster Invasion: " + next_occurances["monsterInvasion"])
-	print("Dungeon Energy: " + next_occurances["dungeonEnergy"])
-	print("Daily Mission: " + next_occurances["dailyMission"])
-	print("Weekly Mission: " + next_occurances["weeklyMission"])
+	output = ""
+	output += "Next Occurences"
+	output += "Guild Siege: " + next_occurances["guildSiege"]
+	output += "Capture the Flag: " + next_occurances["captureTheFlag"]
+	output += "Team Deathmatch: " + next_occurances["teamDeathmatch"]
+	output += "Dodge the Attack: " + next_occurances["dodgeTheAttack"]
+	output += "Monster Invasion: " + next_occurances["monsterInvasion"]
+	output += "Dungeon Energy: " + next_occurances["dungeonEnergy"]
+	output += "Daily Mission: " + next_occurances["dailyMission"]
+	output += "Weekly Mission: " + next_occurances["weeklyMission"]
+	return output
